@@ -2,11 +2,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "node2",
+            "type": "node",
             "request": "launch",
             "name": "Launch Program",
             "preLaunchTask": "tsc-watch",
-            "program": "${workspaceRoot}/bin/src/index.js",
+            "program": "${workspaceRoot}/bin/index.js",
             "cwd": "${workspaceRoot}"
         },
         {
