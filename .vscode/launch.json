@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node2",
+            "request": "launch",
+            "name": "Launch Program",
+            "preLaunchTask": "tsc-watch",
+            "program": "${workspaceRoot}/bin/src/index.js",
+            "cwd": "${workspaceRoot}"
+        },
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "Attach to Process",
+            "port": 5858
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "tsdiscordbot",
+  "version": "1.0.0",
+  "description": "A typescript discord bot.",
+  "main": "./bin/index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "start": "node ./bin"
+  },
+  "repository" : {
+    "type": "git",
+    "url": "git+https://github.com/Mkalo/TSDiscordBot.git"
+  },
+  "author": "Mkalo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Mkalo/TSDiscordBot/issues"
+  },
+  "homepage": "https://github.com/Mkalo/TSDiscordBot#readme",
+  "dependencies": {
+    "@types/request": "0.0.41",
+    "discord.js": "^11.0.0",
+    "request": "^2.81.0"
+  },
+  "devDependencies": {
+    "typescript": "^2.2.1"
+  }
+}
