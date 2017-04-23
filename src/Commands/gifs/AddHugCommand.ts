@@ -34,6 +34,10 @@ export default class AddHugCommand extends Command {
 		});
 	}
 
+	public hasPermission(msg: CommandMessage): boolean {
+		return this.client.isOwner(msg.author) || msg.member.hasPermission('ADMINISTRATOR');
+	}
+
 	public async run(msg: CommandMessage, args: { giphyId: string, remove: string }): Promise<Message | Message[]> {
 		if (!args.giphyId) {
 			return sendSimpleEmbeddedError(msg, 'Invalid giphyId.', 5000);

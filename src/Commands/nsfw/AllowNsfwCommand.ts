@@ -17,11 +17,11 @@ export default class AllowNsfwCommand extends Command {
 		});
 	}
 
-	public async run(msg: CommandMessage, args: { n: string }): Promise<Message | Message[]> {
-		if (!msg.member.hasPermission('ADMINISTRATOR')) {
-			return sendSimpleEmbeddedError(msg, 'You don\'t have permission to use this command.', 5000);
-		}
+	public hasPermission(msg: CommandMessage): boolean {
+		return this.client.isOwner(msg.author) || msg.member.hasPermission('ADMINISTRATOR');
+	}
 
+	public async run(msg: CommandMessage, args: { n: string }): Promise<Message | Message[]> {
 		const nsfw: boolean = msg.client.provider.get(msg.guild, `nsfw-${msg.channel.id}`, false);
 		msg.client.provider.set(msg.guild, `nsfw-${msg.channel.id}`, !nsfw);
 		if (!nsfw) {
