@@ -1,5 +1,5 @@
-import { TSDiscordBot } from "./TSDiscordBot";
+import { TSDiscordBot } from './TSDiscordBot';
 const { token }: { token: string } = require('./settings.json');
 
-const Bot = new TSDiscordBot();
-Bot.start(token);
+const bot: TSDiscordBot = new TSDiscordBot();
+bot.start(token);

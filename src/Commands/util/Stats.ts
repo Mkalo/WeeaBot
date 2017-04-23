@@ -5,14 +5,14 @@ import * as moment from 'moment';
 import 'moment-duration-format';
 
 interface Duration extends moment.Duration {
-  format: (template?: string, precision?: number, settings?: DurationSettings) => string;
+	format: (template?: string, precision?: number, settings?: DurationSettings) => string;
 }
 
 interface DurationSettings {
-  forceLength: boolean;
-  precision: number;
-  template: string;
-  trim: boolean | 'left' | 'right';
+	forceLength: boolean;
+	precision: number;
+	template: string;
+	trim: boolean | 'left' | 'right';
 }
 
 const { version }: { version: string } = require('../../../package');
@@ -34,7 +34,7 @@ export default class StatsCommand extends Command {
 	}
 
 	public async run(msg: CommandMessage): Promise<Message | Message[]> {
-        const duration = moment.duration(this.client.uptime) as Duration;
+		const duration: Duration = moment.duration(this.client.uptime) as Duration;
 		return msg.embed({
 			color: 3447003,
 			description: '**TSDiscordBot Statistics**',

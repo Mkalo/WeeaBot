@@ -3,8 +3,8 @@ import { Command, CommandMessage, CommandoClient } from 'discord.js-commando';
 import * as request from 'request-promise';
 
 export default class NekoCommand extends Command {
-    constructor(client: CommandoClient) {
-        super(client, {
+	constructor(client: CommandoClient) {
+		super(client, {
 			name: 'neko',
 			aliases: ['catgirls', 'catgirl', 'nekos', 'nya', 'nyaa'],
 			group: 'nsfw',
@@ -24,10 +24,10 @@ export default class NekoCommand extends Command {
 					default: ''
 				}
 			]
-        });
-    }
+		});
+	}
 
-    public async run(msg: CommandMessage, args: { nsfw: string }): Promise<Message | Message[]> {
+	public async run(msg: CommandMessage, args: { nsfw: string }): Promise<Message | Message[]> {
 		const { nsfw }: { nsfw: string } = args;
 
 		const response: { url: string } = await request({
@@ -35,7 +35,7 @@ export default class NekoCommand extends Command {
 			headers: { 'User-Agent': `TSDiscordBot v1.0.0 (https://github.com/Mkalo/TSDiscordBot/)` },
 			json: true
 		});
-        
+
 		return msg.embed({
 			color: 3447003,
 			author: {
