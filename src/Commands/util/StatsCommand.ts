@@ -37,7 +37,7 @@ export default class StatsCommand extends Command {
 		const duration: Duration = moment.duration(this.client.uptime) as Duration;
 		return msg.embed({
 			color: 3447003,
-			description: '**TSDiscordBot Statistics**',
+			description: '**WeeaBot Statistics**',
 			fields: [
 				{
 					name: '❯ Uptime',

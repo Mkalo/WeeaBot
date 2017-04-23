@@ -1,3 +1,5 @@
 {
     "token": "BOT_TOKEN",
+	"giphyToken: "GIPHY_API_TOKEN"
+	"hugs" : ["od5H3PmEG5EVq"],
 }

@@ -1,12 +1,12 @@
 import { Message } from 'discord.js';
 import { Command, CommandMessage, CommandoClient } from 'discord.js-commando';
 import * as request from 'request-promise';
+import { sendSimpleEmbeddedError, sendSimpleEmbeddedImage } from '../../Library/Misc';
 
 export default class NekoCommand extends Command {
 	constructor(client: CommandoClient) {
 		super(client, {
 			name: 'neko',
-			aliases: ['catgirls', 'catgirl', 'nekos', 'nya', 'nyaa'],
 			group: 'nsfw',
 			memberName: 'neko',
 			description: 'Posts a random catgirl.',
@@ -19,7 +19,7 @@ export default class NekoCommand extends Command {
 			args: [
 				{
 					key: 'nsfw',
-					prompt: 'would you like to see NSFW pictures?\n',
+					prompt: 'Would you like to see NSFW pictures?\n',
 					type: 'string',
 					default: ''
 				}
@@ -28,21 +28,18 @@ export default class NekoCommand extends Command {
 	}
 
 	public async run(msg: CommandMessage, args: { nsfw: string }): Promise<Message | Message[]> {
+		const nsfwChannel: boolean = !msg.guild ? true : msg.client.provider.get(msg.guild, `nsfw-${msg.channel.id}`, false);
 		const { nsfw }: { nsfw: string } = args;
+		if (nsfw === '-nsfw' && !nsfwChannel) {
+			return sendSimpleEmbeddedError(msg, 'You can only use this command in a nsfw channel!', 5000);
+		}
 
 		const response: { url: string } = await request({
 			uri: `http://catgirls.brussell98.tk/api${nsfw === '-nsfw' ? '/nsfw' : ''}/random`,
-			headers: { 'User-Agent': `TSDiscordBot v1.0.0 (https://github.com/Mkalo/TSDiscordBot/)` },
+			headers: { 'User-Agent': `WeeaBot v1.0.0 (https://github.com/Mkalo/TSDiscordBot/)` },
 			json: true
 		});
 
-		return msg.embed({
-			color: 3447003,
-			author: {
-				name: `${msg.author.username} `,
-				icon_url: msg.author.displayAvatarURL
-			},
-			image: { url: response.url }
-		});
+		return sendSimpleEmbeddedImage(msg, response.url);
 	}
 }
