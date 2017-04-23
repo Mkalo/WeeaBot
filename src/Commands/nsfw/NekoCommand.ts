@@ -1,3 +1,5 @@
+/* See also: https://github.com/WeebDev/Hamakaze */
+
 import { Message } from 'discord.js';
 import { Command, CommandMessage, CommandoClient } from 'discord.js-commando';
 import * as request from 'request-promise';
