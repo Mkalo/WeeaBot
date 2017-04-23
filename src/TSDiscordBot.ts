@@ -16,7 +16,7 @@ export class TSDiscordBot {
 
 		this.client.on('ready', () => {
 			console.log('The bot is ready!');
-			this.client.user.setGame("Use >help");
+			this.client.user.setGame('Use >help');
 		});
 
 		this.client.registry
