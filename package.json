@@ -6,10 +6,13 @@
   "scripts": {
     "lint:gulp": "gulp lint",
     "build:gulp": "gulp build",
+	"watch:gulp": "gulp watch",
+	"prewatch": "npm run lint:gulp -s",
+	"watch": "npm run watch:gulp -s",
     "lint": "npm run lint:gulp -s",
     "prebuild": "npm run lint:gulp -s",
     "build": "npm run build:gulp -s",
-	"start": "node ./bin"
+    "start": "node ./bin"
   },
   "repository": {
     "type": "git",
@@ -31,7 +34,7 @@
     "node-opus": "^0.2.6",
     "request": "^2.81.0",
     "request-promise": "^4.2.0",
-    "sqlite": "^2.3.0",
+    "sqlite": "^2.5.0",
     "winston": "^2.3.1"
   },
   "devDependencies": {

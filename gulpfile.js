@@ -39,3 +39,7 @@ gulp.task('build', () => {
 		.pipe(sourcemaps.write({ sourceRoot: file => path.relative(path.join(file.cwd, file.path), file.base) }))
 		.pipe(gulp.dest('bin/'));
 });
+
+gulp.task('watch', ['build'], function() {
+    gulp.watch('./src/**/*.ts', ['build']);
+});

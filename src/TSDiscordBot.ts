@@ -1,5 +1,6 @@
-import { CommandoClient } from 'discord.js-commando';
+import { CommandoClient, SQLiteProvider } from 'discord.js-commando';
 import * as path from 'path';
+import * as sqlite from 'sqlite';
 
 export class TSDiscordBot {
 	private client: CommandoClient;
@@ -24,6 +25,10 @@ export class TSDiscordBot {
 			])
 			.registerDefaults()
 			.registerCommandsIn(path.join(__dirname, 'Commands'));
+
+		this.client.setProvider(
+			sqlite.open(path.join(__dirname, '../settings.sqlite3')).then((db: any) => new SQLiteProvider(db))
+		).catch(console.error);
 		this.client.login(token);
 	}
 }

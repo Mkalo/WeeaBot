@@ -30,3 +30,6 @@ node_modules
 bin
 
 src/settings.json
+
+# Ignore database
+settings.sqlite3
