@@ -1,2 +1,2 @@
-# TSDiscordBot
-A typescript Discord Bot.
+# WeeaBot
+A weeb typescript Discord Bot.
