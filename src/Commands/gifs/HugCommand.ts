@@ -2,7 +2,7 @@ import { GuildMember, Message } from 'discord.js';
 import { Command, CommandMessage, CommandoClient } from 'discord.js-commando';
 import { getRandomInt, sendSimpleEmbeddedError, sendSimpleEmbeddedImage } from '../../Library/Misc';
 
-const { hugs }: { hugs: string[] } = require('../../settings.json');
+const { hugs }: { hugs: string[] } = require('../../../settings.json');
 
 export default class HugCommand extends Command {
 	constructor(client: CommandoClient) {
