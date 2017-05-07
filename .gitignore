@@ -29,7 +29,8 @@ node_modules
 # Ignore bin
 bin
 
-src/settings.json
+# Ignore settings.json
+settings.json
 
 # Ignore database
 settings.sqlite3
