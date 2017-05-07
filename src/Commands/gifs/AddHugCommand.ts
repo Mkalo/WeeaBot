@@ -3,7 +3,7 @@ import { Command, CommandMessage, CommandoClient } from 'discord.js-commando';
 import { GiphyApi } from '../../Library/GiphyApi';
 import { sendSimpleEmbeddedError, sendSimpleEmbeddedImage } from '../../Library/Misc';
 
-const { hugs }: { hugs: string[] } = require('../../settings.json');
+const { hugs }: { hugs: string[] } = require('../../../settings.json');
 
 export default class AddHugCommand extends Command {
 	constructor(client: CommandoClient) {

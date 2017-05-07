@@ -1,7 +1,7 @@
 /* Powered By Giphy */
 import * as request from 'request-promise';
 
-const { giphyToken }: { giphyToken: string } = require('../settings.json');
+const { giphyToken }: { giphyToken: string } = require('../../settings.json');
 
 interface GiphyResponse {
 	data?: {
