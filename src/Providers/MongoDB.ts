@@ -39,7 +39,7 @@ export class MongoProvider extends SettingProvider {
 			try {
 				settings = JSON.parse(row.settings);
 			} catch (err) {
-				client.emit('warn', `PostgreSQLProvider couldn't parse the settings stored for guild ${row.guild}.`);
+				client.emit('warn', `MongoProvider couldn't parse the settings stored for guild ${row.guild}.`);
 				continue;
 			}
 
