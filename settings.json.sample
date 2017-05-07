@@ -1,6 +1,7 @@
 {
 	"token": "BOT_TOKEN",
-	"giphyToken: "GIPHY_API_TOKEN",
+	"giphyToken": "dc6zaTOxFJmzC",
+	"mongodb" : "mongodb://127.0.0.1:27017/WeeaBot"
 	"hugs" : [
 		"od5H3PmEG5EVq",
 		"du8yT5dStTeMg",

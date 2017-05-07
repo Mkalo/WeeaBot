@@ -1,6 +1,12 @@
-import { CommandoClient, SQLiteProvider } from 'discord.js-commando';
+import { CommandoClient } from 'discord.js-commando';
+import { MongoProvider } from './Providers/MongoDB';
+
+import * as mongoose from 'mongoose';
 import * as path from 'path';
 import * as sqlite from 'sqlite';
+
+const { mongoDb }: { mongoDb: string } = require('../settings.json');
+(mongoose as any).Promise = global.Promise;
 
 export class TSDiscordBot {
 	private client: CommandoClient;
@@ -29,8 +35,9 @@ export class TSDiscordBot {
 			.registerCommandsIn(path.join(__dirname, 'Commands'));
 
 		this.client.setProvider(
-			sqlite.open(path.join(__dirname, '../settings.sqlite3')).then((db: any) => new SQLiteProvider(db))
+			mongoose.connect(mongoDb).then(() => new MongoProvider(mongoose.connection))
 		).catch(console.error);
+
 		this.client.login(token);
 	}
 }
