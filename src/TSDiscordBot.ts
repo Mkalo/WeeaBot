@@ -1,5 +1,6 @@
 import { CommandoClient } from 'discord.js-commando';
 import { MongoProvider } from './Providers/MongoDB';
+import { Server } from './Server/Server';
 
 import * as mongoose from 'mongoose';
 import * as path from 'path';
@@ -10,9 +11,10 @@ const { mongoDb }: { mongoDb: string } = require('../settings.json');
 
 export class TSDiscordBot {
 	private client: CommandoClient;
+	private server: Server;
 
 	public start(token: string): void {
-		console.log('Starting bot.');
+		console.log('Starting bot...');
 		this.client = new CommandoClient({
 			owner: '117336043119706119',
 			commandPrefix: '>',
@@ -22,6 +24,8 @@ export class TSDiscordBot {
 
 		this.client.on('ready', () => {
 			console.log('The bot is ready!');
+			console.log('Starting server...');
+			this.server = new Server(3000, this.client);
 			this.client.user.setGame('Use >help');
 		});
 
