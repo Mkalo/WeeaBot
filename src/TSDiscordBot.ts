@@ -25,7 +25,7 @@ export class TSDiscordBot {
 		this.client.on('ready', () => {
 			console.log('The bot is ready!');
 			console.log('Starting server...');
-			this.server = new Server(3000, this.client);
+			this.server = new Server(4300, this.client);
 			this.client.user.setGame('Use >help');
 		});
 

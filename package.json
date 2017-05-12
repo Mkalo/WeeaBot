@@ -1,5 +1,5 @@
 {
-  "name": "tsdiscordbot",
+  "name": "weeabot",
   "version": "1.0.0",
   "description": "A typescript discord bot.",
   "main": "./bin/index.js",
@@ -18,14 +18,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Mkalo/TSDiscordBot.git"
+    "url": "git+https://github.com/Mkalo/WeeaBot.git"
   },
   "author": "Mkalo",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Mkalo/TSDiscordBot/issues"
+    "url": "https://github.com/Mkalo/WeeaBot/issues"
   },
-  "homepage": "https://github.com/Mkalo/TSDiscordBot#readme",
+  "homepage": "https://github.com/Mkalo/WeeaBot#readme",
   "dependencies": {
     "body-parser": "^1.17.1",
     "bufferutil": "^3.0.0",

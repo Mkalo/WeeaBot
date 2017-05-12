@@ -1,6 +1,6 @@
 import { Guild, GuildMember } from 'discord.js';
 import { CommandoClient } from 'discord.js-commando';
-import { Request, Response, Router } from 'express';
+import { NextFunction, Request, Response, Router } from 'express';
 
 interface MemberResult {
 	id: string;
@@ -20,7 +20,7 @@ export class Api {
 
 		this.route = Router();
 
-		this.route.get('/:id/members', (req: Request, res: Response) => {
+		this.route.get('/guilds/:id/members', (req: Request, res: Response, next: NextFunction) => {
 			const guild: Guild = this.client.guilds.get(req.params.id);
 			if (guild) {
 				guild.fetchMembers()
@@ -39,8 +39,13 @@ export class Api {
 						res.send({ status: 200, members });
 					});
 			} else {
-				res.send({ status: 404 });
+				next();
 			}
+		});
+
+		this.route.get('*', (req: Request, res: Response) => {
+			res.status(404);
+			res.send({ status: 404 });
 		});
 
 	}
