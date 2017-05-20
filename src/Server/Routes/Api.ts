@@ -31,11 +31,6 @@ export class Api {
 						const levels: LevelsMap = this.client.provider.get(result, 'levels') || {};
 						const members: MemberResult[] = [];
 						result.members.forEach((member: GuildMember) => {
-							console.log(member.user.username);
-							console.log(member.user.avatar);
-							console.log(member.user.id);
-							console.log(member.user.displayAvatarURL);
-							console.log(member.user.defaultAvatarURL);
 							members.push({
 								id: member.id,
 								name: member.user.username,
