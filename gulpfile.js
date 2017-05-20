@@ -7,12 +7,13 @@ const tslint = require('tslint');
 const sourcemaps = require('gulp-sourcemaps');
 const del = require('del');
 const path = require('path');
+const nodemon = require('gulp-nodemon');
 
 const project = gulpTs.createProject('tsconfig.json');
 const typeCheck = tslint.Linter.createProgram('tsconfig.json');
 
 gulp.task('lint', () => {
-	gulp.src('./src/**/*.ts')
+	return gulp.src('./src/**/*.ts')
 		.pipe(gulpTslint({
 			configuration: 'tslint.json',
 			formatter: 'prose',
@@ -21,7 +22,7 @@ gulp.task('lint', () => {
 		.pipe(gulpTslint.report());
 })
 
-gulp.task('build', () => {
+gulp.task('build', ['lint'], () => {
 	del.sync(['./bin/**/*.*']);
 	gulp.src('./src/**/*.js')
 		.pipe(gulp.dest('bin/'));
@@ -41,5 +42,19 @@ gulp.task('build', () => {
 });
 
 gulp.task('watch', ['build'], function() {
-    gulp.watch('./src/**/*.ts', ['build']);
+	gulp.watch('./src/**/*.ts', ['build']);
+});
+
+gulp.task('start', ['build'], function() {
+	return nodemon({
+		script: './bin/index.js',
+		watch: './bin/index.js'
+	})
+})
+
+gulp.task('serve', ['watch'], function() {
+	return nodemon({
+		script: './bin/index.js',
+		watch: './bin/'
+	})
 });

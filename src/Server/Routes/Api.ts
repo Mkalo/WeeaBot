@@ -1,3 +1,5 @@
+import { LevelEntry, LevelsMap } from '../../Library/Levels';
+
 import { Guild, GuildMember } from 'discord.js';
 import { CommandoClient } from 'discord.js-commando';
 import { NextFunction, Request, Response, Router } from 'express';
@@ -9,6 +11,7 @@ interface MemberResult {
 	displayName: string;
 	displayColor: number;
 	displayHexColor: string;
+	level: LevelEntry;
 };
 
 export class Api {
@@ -25,15 +28,22 @@ export class Api {
 			if (guild) {
 				guild.fetchMembers()
 					.then((result: Guild) => {
+						const levels: LevelsMap = this.client.provider.get(result, 'levels') || {};
 						const members: MemberResult[] = [];
 						result.members.forEach((member: GuildMember) => {
+							console.log(member.user.username);
+							console.log(member.user.avatar);
+							console.log(member.user.id);
+							console.log(member.user.displayAvatarURL);
+							console.log(member.user.defaultAvatarURL);
 							members.push({
 								id: member.id,
 								name: member.user.username,
 								avatarURL: member.user.displayAvatarURL,
 								displayName: member.displayName,
 								displayColor: member.displayColor,
-								displayHexColor: member.displayHexColor
+								displayHexColor: member.displayHexColor,
+								level: levels[member.id] || { level: 0, experience: 0, totalExperience: 0 }
 							});
 						});
 						res.send({ status: 200, members });

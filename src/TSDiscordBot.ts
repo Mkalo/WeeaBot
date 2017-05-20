@@ -1,6 +1,8 @@
-import { CommandoClient } from 'discord.js-commando';
+import { Levels } from './Library/Levels';
 import { MongoProvider } from './Providers/MongoDB';
 import { Server } from './Server/Server';
+
+import { CommandoClient } from 'discord.js-commando';
 
 import * as mongoose from 'mongoose';
 import * as path from 'path';
@@ -41,6 +43,8 @@ export class TSDiscordBot {
 		this.client.setProvider(
 			mongoose.connect(mongoDb).then(() => new MongoProvider(mongoose.connection))
 		).catch(console.error);
+
+		Levels.setupListeners(this.client);
 
 		this.client.login(token);
 	}
