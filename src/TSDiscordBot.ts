@@ -35,7 +35,8 @@ export class TSDiscordBot {
 			.registerGroups([
 				['nsfw', 'Nsfw'],
 				['util', 'Util'],
-				['gifs', 'Gifs']
+				['gifs', 'Gifs'],
+				['levels', 'Levels'],
 			])
 			.registerDefaults()
 			.registerCommandsIn(path.join(__dirname, 'Commands'));
